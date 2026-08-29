@@ -7,8 +7,7 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_ANON_KEY ?? ""
 );
 
-// TODO: set your real pinned tweet link before launch
-const PINNED_TWEET_URL = "https://x.com/theinklingsxyz/status/0000000000000000000";
+const PINNED_TWEET_URL = "https://x.com/TheInklingsINK/status/2092501543752720462";
 
 function isValidEvm(a: string) { return /^0x[0-9a-fA-F]{40}$/.test(a.trim()); }
 function isValidUrl(u: string) {
