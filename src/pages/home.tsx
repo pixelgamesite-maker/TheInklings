@@ -6,62 +6,77 @@ import {
 } from "../components/theme";
 import WhitelistApplication from "../components/WhitelistApplication";
 
-const X_URL = "https://x.com/theinklingsxyz"; // TODO: set your real X handle
+const X_URL = "https://x.com/TheInklingsINK";
 
 const SPECIMENS = [
   "/inkling-1.jpg", "/inkling-2.jpg", "/inkling-3.jpg", "/inkling-4.jpg", "/inkling-5.jpg",
   // Add more paths here as more art is revealed
 ];
 
-const CLASSES = [
-  { code: "SP-01", name: "Sketches",     desc: "Clean lines, quiet presence, easy to love." },
-  { code: "SP-02", name: "Bled Ink",     desc: "Heavier linework, bolder marks, sharper attitude." },
-  { code: "SP-03", name: "Voidborn",     desc: "Chaotic scribbles, unstable auras, loud energy." },
-  { code: "SP-04", name: "Cosmics",      desc: "Heads opened into stars, moons, and planets. Harder to find." },
-  { code: "SP-05", name: "First Drafts", desc: "The rarest Inklings. The artist's hand still visible." },
-];
-
 const TRAITS = ["Heads", "Eyes & voids", "Marks & scribbles", "Auras", "Shirts", "Drips", "Backdrops", "Rare cosmic features"];
 
-const SYSTEMS = [
-  { name: "The Studio",   desc: "Customize and evolve your Inkling." },
-  { name: "The Gallery",  desc: "Exhibitions, contests, leaderboards, and rewards." },
-  { name: "The Circle",   desc: "Holder gatherings, raffles, missions, and rituals." },
-  { name: "The Ink Well", desc: "Spend $INK on redraws, remixes, and mystery reveals." },
-];
-
+/* Real roadmap, straight from the project's own reference graphic. */
 const ROADMAP = [
-  { phase: "Phase I",   title: "Ink List Opens",   desc: "Applications, collabs, and early access review begin." },
-  { phase: "Phase II",  title: "Mint Opens",        desc: "Selected Ink List wallets mint on OpenSea." },
-  { phase: "Phase III", title: "The Reveal",        desc: "Inklings reveal with marks, classes, and rarity." },
-  { phase: "Phase IV",  title: "$INK Details",      desc: "Tokenomics, supply, and claim mechanics are shared." },
-  { phase: "Phase V",   title: "The Systems Begin", desc: "The Studio, Gallery, Circle, and Ink Well start opening." },
+  {
+    code: "01",
+    title: "The Inklings",
+    blurb: "2,222 hand-drawn misfits arrive on Ink. Holders become the first inhabitants of The Margins.",
+    bullets: [
+      "Holder-only art & collectible drops",
+      "Ecosystem raffles + community rewards",
+      "Voting on future art, lore & experiments",
+      "Priority access to future Inklings releases",
+      "Surprise rewards for active holders",
+    ],
+  },
+  {
+    code: "02",
+    title: "The Margins",
+    blurb: "The collection becomes more than PFPs. A holder-only section of the Inklings world opens.",
+    bullets: [
+      "Wallet-gated experiences",
+      "Community quests",
+      "Evolving lore",
+      "Collaborative releases with other Ink communities",
+      "Exclusive traits / collectibles earned through participation",
+    ],
+  },
+  {
+    code: "03",
+    title: "$INKL",
+    blurb: "Something has been leaking out of the margins — a planned ecosystem token built around the Inklings universe.",
+    bullets: [
+      "Intended to power experiences and collectibles",
+      "Tied to participation across the ecosystem",
+      "Powers future ecosystem mechanics",
+    ],
+    note: "Tokenomics, eligibility, and distribution details will be announced once finalized. No guaranteed allocation is being promised.",
+  },
+  {
+    code: "04",
+    title: "The Archive",
+    blurb: "Every Inkling has a history. The Archive expands the collection through new art, hidden pieces, and community-created lore.",
+    bullets: [
+      "New art & hidden pieces",
+      "Lore & stories discovered",
+      "Community-created content",
+      "Experiments that connect back to the original 2,222",
+      "Some things will be discovered. Others will have to be earned.",
+    ],
+  },
+  {
+    code: "05",
+    title: "Beyond The Margins",
+    blurb: "We keep building with the people who stayed.",
+    bullets: [
+      "New collaborations",
+      "New experiments",
+      "New ways to use $INKL",
+      "New things living on Ink",
+      "The margins keep expanding",
+    ],
+  },
 ];
-
-const FAQS = [
-  { q: "What is Inklings?",            a: "A 10,000 supply NFT collection of hand-inked, cosmic-headed characters on Ethereum." },
-  { q: "What is the mint price?",      a: "0.001 ETH." },
-  { q: "Where is mint?",               a: "OpenSea." },
-  { q: "What is The Ink List?",        a: "The only mint access phase." },
-  { q: "Is there public mint?",        a: "If there are any Inklings left from The Ink List, yes." },
-  { q: "What is $INK?",                a: "The token planned to power future Inklings systems after mint." },
-  { q: "When will $INK details drop?", a: "After mint." },
-  { q: "Is this financial advice?",    a: "No. Inklings is a digital collectible. DYOR." },
-];
-
-/* ── FAQ item ── */
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div style={{ borderBottom: `1px solid ${bone}1c` }}>
-      <button onClick={() => setOpen(o => !o)} style={{ width: "100%", background: "none", border: "none", cursor: "pointer", padding: "18px 0", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px" }}>
-        <span style={{ fontFamily: serif, fontSize: "1.05rem", fontWeight: 600, color: open ? "#fff" : "rgba(255,255,255,0.72)", textAlign: "left" }}>{q}</span>
-        <span style={{ color: bone, fontSize: "1.2rem", flexShrink: 0, transition: "transform 0.25s", transform: open ? "rotate(45deg)" : "rotate(0)" }}>+</span>
-      </button>
-      {open && <p style={{ fontFamily: sans, fontSize: "0.88rem", color: "rgba(255,255,255,0.45)", padding: "0 0 18px", margin: 0, lineHeight: 1.65, maxWidth: "560px" }}>{a}</p>}
-    </div>
-  );
-}
 
 /* ── Specimen gallery — numbered index tabs instead of dots ── */
 function SpecimenGallery() {
@@ -122,51 +137,31 @@ export default function Home() {
         html{scroll-behavior:smooth;}
         a{color:inherit;text-decoration:none;}
         .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;}
-        .mark-row{display:flex;align-items:center;gap:20px;}
         .index-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 32px;}
         @media (max-width:860px){
           .hero-grid{grid-template-columns:1fr;gap:40px;}
           .hero-portrait{order:-1;}
         }
         @media (max-width:560px){
-          .mark-row{flex-wrap:wrap;}
           .index-grid{grid-template-columns:1fr;}
         }
       `}</style>
 
-      {/* ══════════ MASTHEAD ══════════ */}
-      <header style={{
-        position: "sticky", top: 0, zIndex: 50, background: charcoal,
-        borderBottom: `1px solid ${bone}16`, padding: "0 28px", height: "58px",
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-      }}>
-        <a href="#home" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <img src="/inklings-logo.jpg" alt="" style={{ width: "26px", height: "26px", borderRadius: "50%", objectFit: "cover" }} />
-          <span style={{ fontFamily: serif, fontSize: "1rem", fontWeight: 600, color: "#fff", letterSpacing: "0.02em" }}>Inklings</span>
-          <span style={{ fontFamily: mono, fontSize: "0.58rem", letterSpacing: "0.12em", color: `${bone}66`, marginLeft: "2px" }}>ED. 01</span>
-        </a>
-        <nav style={{ display: "flex", alignItems: "center", gap: "2px" }}>
-          {([["Ink List", "#inklist"], ["Mint", "#mint"]] as [string, string][]).map(([l, h]) => (
-            <a key={l} href={h} style={{ fontFamily: mono, fontSize: "0.64rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", padding: "8px 12px", transition: "color 0.2s" }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}>
-              {l}
-            </a>
-          ))}
-          <div style={{ width: "1px", height: "14px", background: "rgba(255,255,255,0.14)", margin: "0 8px" }} />
-          <a href={X_URL} target="_blank" rel="noopener noreferrer" title="Follow on X"
-            style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "30px", height: "30px", color: "rgba(255,255,255,0.55)", transition: "color 0.2s" }}
-            onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-            onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
-            </svg>
-          </a>
-        </nav>
-      </header>
+      {/* ══════════ HEADER — nothing but the X icon ══════════ */}
+      <a href={X_URL} target="_blank" rel="noopener noreferrer" title="Follow on X" style={{
+        position: "fixed", top: "20px", right: "24px", zIndex: 50,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        width: "34px", height: "34px", color: "rgba(255,255,255,0.6)", transition: "color 0.2s",
+      }}
+        onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
+        onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
+        </svg>
+      </a>
 
       {/* ══════════ HERO ══════════ */}
-      <div id="home" style={{ position: "relative", padding: "72px 28px 96px", maxWidth: "1100px", margin: "0 auto" }}>
+      <div id="home" style={{ position: "relative", padding: "64px 28px 96px", maxWidth: "1100px", margin: "0 auto" }}>
         <div style={{ position: "absolute", top: "10%", left: "-8%", width: "480px", height: "480px", borderRadius: "50%", background: `radial-gradient(circle,${washViolet}55 0%,transparent 70%)`, pointerEvents: "none" }} />
         <div style={{ position: "absolute", top: "40%", right: "-6%", width: "380px", height: "380px", borderRadius: "50%", background: `radial-gradient(circle,${washTeal}44 0%,transparent 70%)`, pointerEvents: "none" }} />
 
@@ -174,10 +169,10 @@ export default function Home() {
           <div style={{ animation: ready ? "fadeUp 0.7s ease 0.05s both" : "none", opacity: ready ? undefined : 0 }}>
             <Eyebrow tag="VOL. 01" text="A field guide to the Inkverse" />
             <h1 style={{ fontFamily: serif, fontSize: "clamp(2.4rem,6vw,3.6rem)", fontWeight: 600, color: "#fff", margin: "0 0 22px", lineHeight: 1.08, letterSpacing: "-0.01em" }}>
-              Ten thousand wanderers,<br />drawn from the same <span style={{ fontStyle: "italic", color: bone }}>dark ink.</span>
+              2,222 wanderers,<br />drawn from the same <span style={{ fontStyle: "italic", color: bone }}>dark ink.</span>
             </h1>
             <p style={{ fontFamily: sans, fontSize: "1.02rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, maxWidth: "460px", margin: "0 0 32px" }}>
-              Inklings is a hand-inked, cosmic-headed collection on Ethereum — hollow eyes, scribbled auras, and small windows into deep space, stitched into 10,000 individual studies.
+              Inklings is a hand-inked, cosmic-headed collection on Ink — hollow eyes, scribbled auras, and small windows into deep space, stitched into 2,222 individual studies.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "14px", marginBottom: "34px" }}>
               <a href="#inklist" style={{
@@ -198,7 +193,7 @@ export default function Home() {
               </a>
             </div>
             <p style={{ fontFamily: mono, fontSize: "0.68rem", letterSpacing: "0.06em", color: `${bone}77` }}>
-              10,000 SUPPLY · 0.001 ETH · ETHEREUM · OPENSEA
+              2,222 SUPPLY · 0.001 ETH · INK · OPENSEA
             </p>
           </div>
 
@@ -217,7 +212,7 @@ export default function Home() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "8px", marginBottom: "36px", maxWidth: "560px" }}>
           <h2 style={{ fontFamily: serif, fontSize: "clamp(1.8rem,5vw,2.6rem)", fontWeight: 600, color: "#fff", margin: 0 }}>Meet the Inklings</h2>
           <p style={{ fontFamily: sans, fontSize: "0.95rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, margin: "10px 0 0" }}>
-            Hand-inked, hollow-eyed, and quietly cosmic — a 10,000 supply character collection built from scribbled linework, ink drips, and windows into deep space.
+            Hand-inked, hollow-eyed, and quietly cosmic — a 2,222 supply character collection built from scribbled linework, ink drips, and windows into deep space.
           </p>
         </div>
         <SpecimenGallery />
@@ -243,28 +238,10 @@ export default function Home() {
         </p>
       </SectionWrap>
 
-      {/* ══════════ THE MARKS ══════════ */}
-      <SectionWrap bg={washViolet}>
-        <Eyebrow tag="FIG. 03" text="The Marks" />
-        <h2 style={{ fontFamily: serif, fontSize: "clamp(1.8rem,5vw,2.6rem)", fontWeight: 600, color: "#fff", margin: "0 0 32px" }}>Every Inkling carries a mark</h2>
-        <div>
-          {CLASSES.map((c, i) => (
-            <div key={c.code} className="mark-row" style={{ padding: "20px 0", borderBottom: `1px solid ${bone}22` }}>
-              <InkRingFrame src={SPECIMENS[i % SPECIMENS.length]} size={64} tilt={2} />
-              <div style={{ flex: 1, minWidth: "180px" }}>
-                <p style={{ margin: 0, fontFamily: mono, fontSize: "0.6rem", letterSpacing: "0.1em", color: `${bone}77` }}>{c.code}</p>
-                <p style={{ margin: "3px 0 0", fontFamily: serif, fontSize: "1.1rem", fontWeight: 600, color: "#fff" }}>{c.name}</p>
-                <p style={{ margin: "4px 0 0", fontFamily: sans, fontSize: "0.88rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.5 }}>{c.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </SectionWrap>
-
       {/* ══════════ INK LIST — the most important section on the site ══════════ */}
       <SectionWrap bg={charcoalDeep} pad="110px 0" maxWidth={640}>
         <div id="inklist" style={{ position: "relative", top: "-90px" }} />
-        <Eyebrow tag="FIG. 04" text="Access" />
+        <Eyebrow tag="FIG. 03" text="Access" />
         <h2 style={{ fontFamily: serif, fontSize: "clamp(2rem,6vw,2.8rem)", fontWeight: 600, color: "#fff", margin: "0 0 14px" }}>Join the Ink List</h2>
         <p style={{ fontFamily: sans, fontSize: "0.95rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.7, margin: "0 0 36px", maxWidth: "480px" }}>
           The Ink List is the only mint access phase. Complete the four steps below, submit your wallet, and wait for selection. Selected wallets mint on OpenSea.
@@ -275,11 +252,11 @@ export default function Home() {
       {/* ══════════ MINT ══════════ */}
       <SectionWrap bg={charcoal} maxWidth={640}>
         <div id="mint" style={{ position: "relative", top: "-70px" }} />
-        <Eyebrow tag="FIG. 05" text="The Mint" />
+        <Eyebrow tag="FIG. 04" text="The Mint" />
         <h2 style={{ fontFamily: serif, fontSize: "clamp(1.8rem,5vw,2.6rem)", fontWeight: 600, color: "#fff", margin: "0 0 8px" }}>One phase. One mint.</h2>
         <p style={{ fontFamily: sans, fontStyle: "italic", fontSize: "0.95rem", color: "rgba(255,255,255,0.45)", margin: "0 0 28px" }}>The Ink List is the mint.</p>
         <div style={{ marginBottom: "28px" }}>
-          {[["Supply", "10,000"], ["Price", "0.001 ETH"], ["Chain", "Ethereum"], ["Launchpad", "OpenSea"]].map(([l, v]) => (
+          {[["Supply", "2,222"], ["Price", "0.001 ETH"], ["Chain", "Ink"], ["Launchpad", "OpenSea"]].map(([l, v]) => (
             <div key={l} style={{ display: "flex", justifyContent: "space-between", padding: "14px 0", borderBottom: `1px solid ${bone}18` }}>
               <span style={{ fontFamily: mono, fontSize: "0.68rem", letterSpacing: "0.1em", textTransform: "uppercase", color: `${bone}77` }}>{l}</span>
               <span style={{ fontFamily: serif, fontSize: "1.05rem", fontWeight: 600, color: "#fff" }}>{v}</span>
@@ -296,66 +273,66 @@ export default function Home() {
         </a>
       </SectionWrap>
 
-      {/* ══════════ ARCHIVE ══════════ */}
+      {/* ══════════ TOKEN — a short teaser; full mechanics live in the roadmap ══════════ */}
       <SectionWrap bg={charcoal} maxWidth={640}>
-        <Eyebrow tag="FIG. 06" text="Reserve" />
-        <h2 style={{ fontFamily: serif, fontSize: "clamp(1.8rem,5vw,2.6rem)", fontWeight: 600, color: "#fff", margin: "0 0 14px" }}>The Ink Archive</h2>
+        <Eyebrow tag="FIG. 05" text="Token" />
+        <h2 style={{ fontFamily: serif, fontSize: "clamp(2.6rem,9vw,4.2rem)", fontWeight: 700, color: mustard, margin: "0 0 18px", letterSpacing: "0.01em" }}>$INKL</h2>
         <p style={{ fontFamily: sans, fontSize: "0.95rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, maxWidth: "520px" }}>
-          A small allocation kept for collabs, rewards, partnerships, future activations, and community support. This is not a public mint phase.
+          Something has been leaking out of the margins — a planned ecosystem token built around the Inklings universe. Full mechanics are laid out in the roadmap below.
         </p>
-      </SectionWrap>
-
-      {/* ══════════ TOKEN ══════════ */}
-      <SectionWrap bg={charcoal} maxWidth={640}>
-        <Eyebrow tag="FIG. 07" text="Token" />
-        <h2 style={{ fontFamily: serif, fontSize: "clamp(2.6rem,9vw,4.2rem)", fontWeight: 700, color: mustard, margin: "0 0 18px", letterSpacing: "0.01em" }}>$INK</h2>
-        <p style={{ fontFamily: sans, fontSize: "0.95rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, maxWidth: "520px" }}>
-          $INK is the current running beneath the Inklings world. It's planned to power future holder systems, redraws, remixes, raffles, burns, events, and community rewards. Full token details will be shared after mint.
-        </p>
-      </SectionWrap>
-
-      {/* ══════════ SYSTEMS ══════════ */}
-      <SectionWrap bg={washTeal} maxWidth={640}>
-        <Eyebrow tag="FIG. 08" text="Systems" />
-        <h2 style={{ fontFamily: serif, fontSize: "clamp(1.8rem,5vw,2.6rem)", fontWeight: 600, color: "#fff", margin: "0 0 30px" }}>The systems</h2>
-        <div>
-          {SYSTEMS.map(s => (
-            <div key={s.name} style={{ display: "flex", alignItems: "flex-start", gap: "14px", padding: "18px 0", borderBottom: `1px solid ${bone}22` }}>
-              <InkTick />
-              <div>
-                <p style={{ margin: 0, fontFamily: serif, fontSize: "1.05rem", fontWeight: 600, color: "#fff" }}>{s.name}</p>
-                <p style={{ margin: "4px 0 0", fontFamily: sans, fontSize: "0.88rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.5 }}>{s.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
       </SectionWrap>
 
       {/* ══════════ ROADMAP ══════════ */}
       <SectionWrap bg={washViolet} maxWidth={640}>
-        <Eyebrow tag="FIG. 09" text="The plan" />
-        <h2 style={{ fontFamily: serif, fontSize: "clamp(1.8rem,5vw,2.6rem)", fontWeight: 600, color: "#fff", margin: "0 0 36px" }}>What comes after mint</h2>
+        <Eyebrow tag="FIG. 06" text="The Plan" />
+        <h2 style={{ fontFamily: serif, fontSize: "clamp(1.8rem,5vw,2.6rem)", fontWeight: 600, color: "#fff", margin: "0 0 8px" }}>The Inklings Roadmap</h2>
+        <p style={{ fontFamily: sans, fontStyle: "italic", fontSize: "0.95rem", color: "rgba(255,255,255,0.5)", margin: "0 0 40px" }}>
+          The margins are just the beginning.
+        </p>
+
         <div style={{ position: "relative" }}>
-          <div style={{ position: "absolute", left: "5px", top: "6px", bottom: "6px", width: "1px", background: `${bone}33` }} />
+          <div style={{ position: "absolute", left: "13px", top: "6px", bottom: "6px", width: "1px", background: `${bone}33` }} />
           {ROADMAP.map((r, i) => (
-            <div key={r.phase} style={{ display: "flex", gap: "24px", paddingBottom: i < ROADMAP.length - 1 ? "26px" : "0", paddingLeft: "26px", position: "relative" }}>
-              <div style={{ position: "absolute", left: "0px", top: "5px", width: "11px", height: "11px", borderRadius: "50%", border: `1px solid ${bone}`, background: washViolet }} />
-              <div>
-                <p style={{ margin: "0 0 3px", fontFamily: mono, fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: bone }}>{r.phase}</p>
-                <p style={{ margin: 0, fontFamily: serif, fontSize: "1.02rem", fontWeight: 600, color: "#fff" }}>{r.title}</p>
-                <p style={{ margin: "4px 0 0", fontFamily: sans, fontSize: "0.86rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.5 }}>{r.desc}</p>
+            <div key={r.code} style={{ display: "flex", gap: "22px", paddingBottom: i < ROADMAP.length - 1 ? "38px" : "0", position: "relative" }}>
+              <div style={{
+                width: "27px", height: "27px", borderRadius: "50%", flexShrink: 0, zIndex: 1,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                border: `1px solid ${bone}`, background: washViolet,
+              }}>
+                <span style={{ fontFamily: mono, fontSize: "0.62rem", color: bone }}>{r.code}</span>
+              </div>
+              <div style={{ flex: 1, paddingTop: "3px" }}>
+                <p style={{ margin: "0 0 3px", fontFamily: mono, fontSize: "0.62rem", letterSpacing: "0.14em", textTransform: "uppercase", color: `${bone}88` }}>Phase {r.code}</p>
+                <p style={{ margin: 0, fontFamily: serif, fontSize: "1.15rem", fontWeight: 600, color: "#fff" }}>{r.title}</p>
+                <p style={{ margin: "6px 0 14px", fontFamily: sans, fontSize: "0.88rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.6, maxWidth: "480px" }}>{r.blurb}</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>
+                  {r.bullets.map(b => (
+                    <div key={b} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                      <div style={{ marginTop: "2px" }}><InkTick size={11} opacity={0.7} /></div>
+                      <span style={{ fontFamily: sans, fontSize: "0.85rem", color: "rgba(255,255,255,0.62)", lineHeight: 1.5 }}>{b}</span>
+                    </div>
+                  ))}
+                </div>
+                {r.note && (
+                  <p style={{
+                    marginTop: "16px", padding: "12px 14px", border: `1px solid ${bone}22`, borderRadius: "4px",
+                    fontFamily: mono, fontSize: "0.68rem", color: `${bone}88`, lineHeight: 1.6,
+                  }}>
+                    {r.note}
+                  </p>
+                )}
               </div>
             </div>
           ))}
         </div>
-      </SectionWrap>
 
-      {/* ══════════ FAQ ══════════ */}
-      <SectionWrap bg={charcoal} maxWidth={640}>
-        <div id="faq" style={{ position: "relative", top: "-70px" }} />
-        <Eyebrow tag="FIG. 10" text="Questions" />
-        <h2 style={{ fontFamily: serif, fontSize: "clamp(1.8rem,5vw,2.6rem)", fontWeight: 600, color: "#fff", margin: "0 0 28px" }}>Frequently asked</h2>
-        <div>{FAQS.map(f => <FaqItem key={f.q} q={f.q} a={f.a} />)}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: "14px", marginTop: "44px" }}>
+          <div style={{ flex: 1, height: "1px", background: `${bone}22` }} />
+          <p style={{ fontFamily: mono, fontSize: "0.62rem", letterSpacing: "0.12em", textTransform: "uppercase", color: `${bone}99`, textAlign: "center", margin: 0, whiteSpace: "nowrap" }}>
+            2,222 Inklings · one margin · and we're only at the first page
+          </p>
+          <div style={{ flex: 1, height: "1px", background: `${bone}22` }} />
+        </div>
       </SectionWrap>
 
       <Hairline />
@@ -368,22 +345,14 @@ export default function Home() {
             <span style={{ fontFamily: serif, fontSize: "1.05rem", fontWeight: 600, color: "#fff" }}>Inklings</span>
           </div>
           <p style={{ fontFamily: sans, fontSize: "0.82rem", color: "rgba(255,255,255,0.35)", lineHeight: 1.7, margin: 0 }}>
-            Hand-inked wanderers, adrift between memory and cosmos. 10,000 Inklings on Ethereum, powered by $INK.
+            2,222 hand-inked wanderers on Ink, powered by $INKL.
           </p>
         </div>
-        <div style={{ display: "flex", gap: "48px", flexWrap: "wrap" }}>
-          <div>
-            <p style={{ fontFamily: mono, fontSize: "0.6rem", letterSpacing: "0.14em", textTransform: "uppercase", color: `${bone}55`, margin: "0 0 12px" }}>Site</p>
-            {[["Ink List", "#inklist"], ["Mint", "#mint"], ["Questions", "#faq"]].map(([l, h]) => (
-              <a key={l} href={h} style={{ display: "block", fontFamily: sans, fontSize: "0.85rem", color: "rgba(255,255,255,0.55)", marginBottom: "8px" }}>{l}</a>
-            ))}
-          </div>
-          <div>
-            <p style={{ fontFamily: mono, fontSize: "0.6rem", letterSpacing: "0.14em", textTransform: "uppercase", color: `${bone}55`, margin: "0 0 12px" }}>Elsewhere</p>
-            {[["X", X_URL], ["OpenSea", "https://opensea.io/collection/inklings"]].map(([l, h]) => (
-              <a key={l} href={h} target="_blank" rel="noopener noreferrer" style={{ display: "block", fontFamily: sans, fontSize: "0.85rem", color: "rgba(255,255,255,0.55)", marginBottom: "8px" }}>{l}</a>
-            ))}
-          </div>
+        <div>
+          <p style={{ fontFamily: mono, fontSize: "0.6rem", letterSpacing: "0.14em", textTransform: "uppercase", color: `${bone}55`, margin: "0 0 12px" }}>Site</p>
+          {[["Ink List", "#inklist"], ["Mint", "#mint"], ["X", X_URL]].map(([l, h]) => (
+            <a key={l} href={h} target={h.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" style={{ display: "block", fontFamily: sans, fontSize: "0.85rem", color: "rgba(255,255,255,0.55)", marginBottom: "8px" }}>{l}</a>
+          ))}
         </div>
       </footer>
       <div style={{ textAlign: "center", padding: "0 0 32px" }}>
