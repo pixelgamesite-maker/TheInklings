@@ -3,8 +3,8 @@ import {
   FONT_LINK, serif, mono, sans,
   charcoal, charcoalDeep, washTeal, washViolet, bone, mustard,
   SectionWrap, Eyebrow, InkRingFrame, InkTick, Hairline,
-} from "./theme";
-import WhitelistApplication from "./WhitelistApplication";
+} from "../components/theme";
+import WhitelistApplication from "../components/WhitelistApplication";
 
 const X_URL = "https://x.com/theinklingsxyz"; // TODO: set your real X handle
 
