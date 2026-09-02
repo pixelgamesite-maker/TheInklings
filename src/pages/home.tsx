@@ -263,7 +263,7 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <a href="https://opensea.io/collection/inklings" target="_blank" rel="noopener noreferrer" style={{
+        <a href="https://opensea.io/collection/theinklingsink/overview" target="_blank" rel="noopener noreferrer" style={{
           width: "100%", fontFamily: mono, fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase",
           color: charcoalDeep, background: bone, borderRadius: "4px", padding: "15px",
           display: "flex", alignItems: "center", justifyContent: "center", gap: "10px",
